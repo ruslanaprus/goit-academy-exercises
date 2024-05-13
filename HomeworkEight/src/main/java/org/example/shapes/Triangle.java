@@ -76,4 +76,15 @@ public class Triangle extends Shape {
         System.out.println("Triangle sides: [POINT1 - POINT2] = " + String.format("%.2f", c) + ", [POINT2 - POINT3] = " + String.format("%.2f", a) + ", [POINT1 - POINT3] = " + String.format("%.2f", b));
 
     }
+
+    @Override
+    public double getRadius() {
+        throw new UnsupportedOperationException("triangle does not have a radius");
+    }
+
+    @Override
+    public double getCircumference() {
+        throw new UnsupportedOperationException("triangle does not have a radius");
+    }
+
 }

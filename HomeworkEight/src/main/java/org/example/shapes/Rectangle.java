@@ -73,4 +73,14 @@ public class Rectangle extends Shape {
 
     }
 
+    @Override
+    public double getRadius() {
+        throw new UnsupportedOperationException("rectangle does not have a radius");
+    }
+
+    @Override
+    public double getCircumference() {
+        throw new UnsupportedOperationException("rectangle does not have a radius");
+    }
+
 }

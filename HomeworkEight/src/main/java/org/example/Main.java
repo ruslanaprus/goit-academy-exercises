@@ -1,9 +1,6 @@
 package org.example;
 
-import org.example.shapes.Parallelogram;
-import org.example.shapes.Rectangle;
-import org.example.shapes.Shape;
-import org.example.shapes.Triangle;
+import org.example.shapes.*;
 
 import java.util.Arrays;
 
@@ -33,6 +30,15 @@ public class Main {
         System.out.println("parallelogram.getNumberOfSides() = " + parallelogram.getNumberOfSides());
         System.out.println("parallelogram.getAngle() = " + parallelogram.getAngle("POINT2"));
         parallelogram.getSidesLength();
+
+        System.out.println("\nCIRCLE INFO\n");
+        Shape circle = new Circle(new int[]{3, 2, 3, -1, 0, 2});
+        System.out.println("circle.getName() = " + circle.getName());
+        System.out.println("circle.getPoints() = " + Arrays.toString(circle.getPoints()));
+        System.out.println("circle.getRadius() = " + circle.getRadius());
+        System.out.println("central angle of the circle = " + circle.getAngle("central angle"));
+        System.out.println("inscribed angle of the circle = " + circle.getAngle("inscribed angle"));
+        System.out.println("circle.getCircumference() = " + String.format("%.2f", circle.getCircumference()));
 
     }
 }

@@ -71,4 +71,14 @@ public class Parallelogram extends Shape {
         System.out.println("Parallelogram sides: a = " + String.format("%.2f", a) + ", b = " + String.format("%.2f", b));
     }
 
+    @Override
+    public double getRadius() {
+        throw new UnsupportedOperationException("parallelogram does not have a radius");
+    }
+
+    @Override
+    public double getCircumference() {
+        throw new UnsupportedOperationException("parallelogram does not have a radius");
+    }
+
 }
