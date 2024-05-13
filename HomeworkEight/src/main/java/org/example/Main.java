@@ -40,5 +40,10 @@ public class Main {
         System.out.println("inscribed angle of the circle = " + circle.getAngle("inscribed angle"));
         System.out.println("circle.getCircumference() = " + String.format("%.2f", circle.getCircumference()));
 
+        System.out.println("\nELLIPSE INFO\n");
+        Shape ellipse = new Ellipse(new int[]{2, 0, 2, 2, 7, 0});
+        System.out.println("ellipse.getName() = " + ellipse.getName());
+        System.out.println("ellipse.getPoints() = " + Arrays.toString(ellipse.getPoints()));
+
     }
 }
