@@ -2,68 +2,45 @@ package org.example.shapes;
 
 import org.example.drawer.Point;
 
-import java.util.Arrays;
-
 public class Parallelogram extends Shape {
-    private final String name = "Parallelogram";
-    private Point[] parallelogramPoints = new Point[4];
-    private Point p1;
-    private Point p2;
-    private Point p3;
-    private Point p4;
+
+    private Point p1 = points[0];
+    private Point p2 = points[1];
+    private Point p3 = points[2];
+    private Point p4 = points[3];
 
     public Parallelogram(int[] coordinates) {
-        if (coordinates.length == 0) {
-            throw new IllegalArgumentException("coordinates must be provided");
-        }
-        if (coordinates.length % 2 != 0) {
-            throw new IllegalArgumentException("coordinates must be even number");
-        }
-        for (int i = 0; i < coordinates.length; i += 2) {
-            int x = coordinates[i];
-            int y = coordinates[i + 1];
-            parallelogramPoints[i / 2] = new Point(x, y);
-        }
-
-        p1 = parallelogramPoints[0];
-        p2 = parallelogramPoints[1];
-        p3 = parallelogramPoints[2];
-        p4 = parallelogramPoints[3];
-
-    }
-
-    @Override
-    public String getName() {
-        return this.name;
-    }
-
-    @Override
-    public Point[] getPoints() {
-        return Arrays.copyOf(parallelogramPoints, parallelogramPoints.length);
-    }
-
-    @Override
-    public int getNumberOfSides() {
-        return this.parallelogramPoints.length;
+        super("Parallelogram", coordinates);
     }
 
     @Override
     public double getAngle(String pointName) {
         if (pointName.equals("POINT1") || pointName.equals("POINT3")) {
             return Point.getAngleAtPoint(
-                    p1, p2, p4
+                    p4, p1, p2
             );
         }
         if (pointName.equals("POINT2") || pointName.equals("POINT4")) {
             return Point.getAngleAtPoint(
-                    p2, p3, p1
+                    p1, p2, p3
             );
         }
         throw new IllegalArgumentException("Unknown point");
     }
 
     @Override
-    public void getSidesLength() {
+    public double getArea() {
+        double[] sides = getSides();
+        double[] angles = getAngles();
+
+        // points[0] and points[1] represent the adjacent sides of the parallelogram
+        double angle = Math.toRadians(angles[0]); // Convert angle to radians for trigonometric functions
+
+        return sides[0] * sides[1] * Math.sin(angle);
+    }
+
+    @Override
+    public void printSidesLength() {
 
         double a = Point.getLength(p1, p2);
         double b = Point.getLength(p2, p3);

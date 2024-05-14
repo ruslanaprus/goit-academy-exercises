@@ -75,12 +75,13 @@ public class Point {
      * @return The angle in degrees.
      */
     public static double getAngleAtPoint(Point point1, Point point2, Point point3) {
-        double anglePoint1 = Math.acos((Math.pow(getLength(point1, point3), 2)
-                + Math.pow(getLength(point1, point2), 2)
-                - Math.pow(getLength(point2, point3), 2))
-                / (2 * getLength(point1, point3) * getLength(point1, point2)));
+        double length1 = getLength(point1, point2);
+        double length2 = getLength(point2, point3);
+        double length3 = getLength(point1, point3);
+
+        double angleRadians = Math.acos((length1 * length1 + length2 * length2 - length3 * length3) / (2 * length1 * length2));
         DecimalFormat df = new DecimalFormat("#.##");
-        return Double.parseDouble(df.format(Math.toDegrees(anglePoint1)));
+        return Double.parseDouble(df.format(Math.toDegrees(angleRadians)));
     }
 
     @Override

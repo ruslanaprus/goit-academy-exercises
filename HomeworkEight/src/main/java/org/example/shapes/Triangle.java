@@ -2,8 +2,6 @@ package org.example.shapes;
 
 import org.example.drawer.Point;
 
-import java.util.Arrays;
-
 public class Triangle extends Shape {
     private final String name = "Triangle";
     private final Point[] trianglePoints = new Point[3];
@@ -12,38 +10,7 @@ public class Triangle extends Shape {
     private final Point p3;
 
     public Triangle(int[] coordinates) {
-        if (coordinates.length == 0) {
-            throw new IllegalArgumentException("coordinates must be provided");
-        }
-        if (coordinates.length % 2 != 0) {
-            throw new IllegalArgumentException("Coordinates must be even number");
-        }
-
-        for (int i = 0; i < coordinates.length; i += 2) {
-            int x = coordinates[i];
-            int y = coordinates[i + 1];
-            trianglePoints[i / 2] = new Point(x, y);
-        }
-
-        p1 = trianglePoints[0];
-        p2 = trianglePoints[1];
-        p3 = trianglePoints[2];
-
-    }
-
-    @Override
-    public String getName() {
-        return this.name;
-    }
-
-    @Override
-    public Point[] getPoints() {
-        return Arrays.copyOf(trianglePoints, trianglePoints.length);
-    }
-
-    @Override
-    public int getNumberOfSides() {
-        return this.trianglePoints.length;
+        super("Triangle", coordinates);
     }
 
     @Override
@@ -67,7 +34,19 @@ public class Triangle extends Shape {
     }
 
     @Override
-    public void getSidesLength() {
+    public double getArea() {
+        double[] sides = getSides();
+
+        // Uses Heron's formula to calculate the area of triangle
+        double area = Math.sqrt(getPerimeter() / 2.0 *
+                (getPerimeter() / 2.0 - sides[0]) *
+                (getPerimeter() / 2.0 - sides[1]) *
+                (getPerimeter() / 2.0 - sides[2]));
+        return area;
+    }
+
+    @Override
+    public void printSidesLength() {
 
         double c = Point.getLength(p1, p2);
         double a = Point.getLength(p2, p3);
