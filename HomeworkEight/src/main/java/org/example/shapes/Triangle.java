@@ -2,12 +2,14 @@ package org.example.shapes;
 
 import org.example.drawer.Point;
 
+import java.util.Arrays;
+
 public class Triangle extends Shape {
     private final String name = "Triangle";
     private final Point[] trianglePoints = new Point[3];
-    private final Point p1;
-    private final Point p2;
-    private final Point p3;
+    private Point p1;
+    private Point p2;
+    private Point p3;
 
     public Triangle(int[] coordinates) {
         super("Triangle", coordinates);
