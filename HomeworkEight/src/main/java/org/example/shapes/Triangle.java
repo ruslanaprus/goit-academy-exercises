@@ -2,14 +2,10 @@ package org.example.shapes;
 
 import org.example.drawer.Point;
 
-import java.util.Arrays;
-
 public class Triangle extends Shape {
-    private final String name = "Triangle";
-    private final Point[] trianglePoints = new Point[3];
-    private Point p1;
-    private Point p2;
-    private Point p3;
+    Point p1 = points[0];
+    Point p2 = points[1];
+    Point p3 = points[2];
 
     public Triangle(int[] coordinates) {
         super("Triangle", coordinates);
@@ -55,36 +51,14 @@ public class Triangle extends Shape {
         double b = Point.getLength(p1, p3);
 
         System.out.println("Triangle sides: [POINT1 - POINT2] = " + String.format("%.2f", c) + ", [POINT2 - POINT3] = " + String.format("%.2f", a) + ", [POINT1 - POINT3] = " + String.format("%.2f", b));
-
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        Point[] bob = (Point[]) o;
-        System.out.println("What is trianglePoints" + Arrays.toString(trianglePoints));
-        System.out.println("What is bob" + Arrays.toString(bob));
-        return
-                trianglePoints[0].x == bob[0].x
-                        && trianglePoints[0].y == bob[0].y
-                        && trianglePoints[1].x == bob[1].x
-                        && trianglePoints[1].y == bob[1].y
-                        && trianglePoints[2].x == bob[2].x
-                        && trianglePoints[2].y == bob[2].y
-                ;
     }
 
     public static boolean arePointsTheSame(Triangle tri, Point[] points) {
-        return tri.trianglePoints[0].x == points[0].x &&
-                tri.trianglePoints[0].y == points[0].y &&
-                tri.trianglePoints[1].x == points[1].x &&
-                tri.trianglePoints[1].y == points[1].y &&
-                tri.trianglePoints[2].x == points[2].x &&
-                tri.trianglePoints[2].y == points[2].y;
-    }
-
-    @Override
-    public int hashCode() {
-        return Arrays.hashCode(trianglePoints);
+        return tri.p1.x == points[0].x &&
+                tri.p1.y == points[0].y &&
+                tri.p2.x == points[1].x &&
+                tri.p2.y == points[1].y &&
+                tri.p3.x == points[2].x &&
+                tri.p3.y == points[2].y;
     }
 }
