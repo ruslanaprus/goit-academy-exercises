@@ -51,6 +51,14 @@ public class Triangle extends Shape {
         double b = Point.getLength(p1, p3);
 
         System.out.println("Triangle sides: [POINT1 - POINT2] = " + String.format("%.2f", c) + ", [POINT2 - POINT3] = " + String.format("%.2f", a) + ", [POINT1 - POINT3] = " + String.format("%.2f", b));
+    }
 
+    public static boolean arePointsTheSame(Triangle tri, Point[] points) {
+        return tri.p1.x == points[0].x &&
+                tri.p1.y == points[0].y &&
+                tri.p2.x == points[1].x &&
+                tri.p2.y == points[1].y &&
+                tri.p3.x == points[2].x &&
+                tri.p3.y == points[2].y;
     }
 }
