@@ -14,6 +14,8 @@ public class PathExample {
             try {
                 Files.createFile(filePath);
                 System.out.println("File created successfully: " + filePath.toAbsolutePath());
+
+                Files.deleteIfExists(filePath);
             } catch (IOException e) {
                 System.err.println("Error creating the file: " + e.getMessage());
             }
