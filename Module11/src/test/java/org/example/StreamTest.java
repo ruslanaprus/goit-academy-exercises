@@ -14,7 +14,7 @@ public class StreamTest {
 
     @Test
     void testSearchForItemIsPresent(){
-        List<String> catsTest = Arrays.asList("Wiskers, Pawster", "Buscuit", "Pounce", "Catsby", "Purrlock Holmes", "Catpernicus", "Picatso");
+        List<String> catsTest = Arrays.asList("Wiskers", "Pawster", "Buscuit", "Pounce", "Catsby", "Purrlock Holmes", "Catpernicus", "Picatso");
 
         List<String> result = StreamExample.searchFor(catsTest,"cat");
 
@@ -62,4 +62,10 @@ public class StreamTest {
         assertEquals(expected, sortedCats);
     }
 
+    @Test
+    public void testLargeNumbers() {
+        List<String> input = Arrays.asList("abc123456789012345678901234567890", "def98765432109876543210987654321", "gh12345678901234567890");
+        String expected = "12345678901234567890, 98765432109876543210987654321, 123456789012345678901234567890";
+        assertEquals(expected, StreamExample.collectAndSortLargeNumbers(input));
+    }
 }
