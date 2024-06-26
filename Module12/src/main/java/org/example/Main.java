@@ -32,6 +32,8 @@ public class Main {
         System.out.println("expected priority:\n5\nresult: ");
         System.out.println(thread.getPriority());
 
+        System.out.println("Runtime.getRuntime().availableProcessors() = " + Runtime.getRuntime().availableProcessors());
+
         System.out.println("main thread...");
         Thread interruptThread = new InterruptThread();
         interruptThread.start();
